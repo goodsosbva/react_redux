@@ -1,7 +1,9 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-const { logIn, logOut } = require("./actions/user");
+const { logIn } = require("./actions/user");
+const { addPost } = require("./actions/post");
 const userSlice = require("./reducers/user");
+const postSlice = require("./reducers/post");
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -17,8 +19,12 @@ const App = () => {
   }, []);
 
   const onLogOut = useCallback(() => {
-    dispatch(userSlice.actions(logOut()));
+    dispatch(userSlice.actions.logOut());
   }, []);
+
+  const onAddPost = useCallback(() => {
+    dispatch(addPost());
+  });
 
   return (
     <div>
@@ -34,6 +40,8 @@ const App = () => {
       ) : (
         <button onClick={onLogOut}>logOut</button>
       )}
+      <br />
+      <button onClick={onAddPost}>게시글 작성</button>
     </div>
   );
 };

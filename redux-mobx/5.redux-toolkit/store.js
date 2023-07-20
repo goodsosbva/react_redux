@@ -1,7 +1,7 @@
 // 리덕스 툴킷을 쓰면서 사란진 목록 - 주석 처리
 // const { createStore, applyMiddleware, compose } = require("redux");
-// const reducer = require("./reducers");
 // const { composeWithDevTools } = require("redux-devtools-extension");
+const reducer = require("./reducers");
 const { configureStore, getDefaultMiddleware } = require("@reduxjs/toolkit");
 
 const { addPost } = require("./actions/post");

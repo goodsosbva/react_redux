@@ -1,4 +1,5 @@
 const { createSlice } = require("@reduxjs/toolkit");
+const { addPost } = require("../actions/post");
 
 const initialState = {
   data: [],
@@ -17,11 +18,13 @@ const postSlice = createSlice({
   name: "post",
   initialState,
   reducers: {},
-  extraReducers: {
-    [addPost.pending](state, action) {},
-    [addPost.fullfilled](state, action) {},
-    [addPost.rejected](state, action) {},
-  },
+  extraReducers: (builder) =>
+    builder
+      .addCase(addPost.pending, (state, action) => {})
+      .addCase(addPost.fulfilled, (state, action) => {
+        state.data.push(action.payload);
+      })
+      .addCase(addPost.rejected, (state, action) => {}),
 });
 
-module.exports = postReducer;
+module.exports = postSlice;
