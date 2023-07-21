@@ -4,6 +4,9 @@ const { logIn } = require("../actions/user");
 const initialState = {
   isLoggingIn: false,
   data: null,
+  prices: Array(100)
+    .fill()
+    .map((v, i) => (i + 1) * 100),
 };
 
 const userReducer = (prevState = initialState, action) => {
